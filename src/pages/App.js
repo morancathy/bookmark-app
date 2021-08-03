@@ -13,7 +13,6 @@ export default function App(props) {
 				const response = await fetch('/api/bookmarks');
 				const data = await response.json();
 				setBookmarks(data);
-				console.log(data);
 			} catch (error) {
 				console.error(error);
 			}
@@ -46,24 +45,44 @@ export default function App(props) {
 		setNewBookmark({ ...newBookmark, [e.target.id]: e.target.value });
 	}; //still not to sure what e.target.id and e.target.value actually does
 
+	const handleDelete = async id => {
+		// fetch(`/api/bookmarks/${id}`, { method: 'DELETE' }).then(() =>
+		// 	setBookmarks({ status: 'Delete worked' })
+		// );
+
+		try {
+			const response = await fetch(`/api/bookmarks/${id}`, {
+				method: 'DELETE',
+				headers: {
+					'Content-Type': 'application/json'
+				},
+				body: JSON.stringify(newBookmark)
+			});
+			setBookmarks(bookmarks.filter(bookmark => bookmark._id !== id));
+		} catch (error) {
+			console.error(error);
+		}
+	};
+
 	return (
 		<div className="AppPage">
 			This is the {props.page} page
+			{/*where is props and name 'app' coming from*/}
 			<h1>My Bookmarks</h1>
 			<form onSubmit={handleSubmit}>
 				<input
 					type="text"
 					id="title"
-					value={newBookmark.title}
+					placeholder="website title"
 					onChange={handleChange}
 				/>
 				<input
 					type="text"
 					id="link"
-					value={newBookmark.link}
+					placeholder="link"
 					onChange={handleChange}
 				/>
-				<input type="submit" value="Submit" />
+				<input type="submit" value="Add New Website" />
 			</form>
 			<ul>
 				{bookmarks.map(bookmark => {
@@ -72,6 +91,8 @@ export default function App(props) {
 							<a className="link" href={bookmark.link}>
 								{bookmark.title}
 							</a>
+							<button onClick={() => handleDelete(bookmark._id)}>Delete</button>{' '}
+							{/*another way to write this to prevent loop?*/}
 						</li>
 					);
 				})}
