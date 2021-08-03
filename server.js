@@ -83,8 +83,16 @@ app.put('/api/bookmarks/:id', async (req, res) => {
 
 // Delete
 app.delete('/api/bookmarks/:id', async (req, res) => {
-  res.json({"route": "delete"})
-})
+  try {
+    const deletedBookmark = await Bookmark.findByIdAndDelete(req.params.id)
+    res.status(200).json(deletedBookmark)
+  } catch (error) {
+    console.error(error)
+    res.status(400).json({
+      message: error.message
+    })
+  }
+});
 /* Controller Ends here */
 
 //LISTENER
