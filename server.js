@@ -70,8 +70,16 @@ app.get('/api/bookmarks/:id', async (req, res) => {
 
 // Update
 app.put('/api/bookmarks/:id', async (req, res) => {
-  res.json({"route": "update"})
-})
+  try{
+    const updatedBookmark = await Bookmark.findByIdAndUpdate(req.params.id, req.body, {new: true})
+    res.status(200).json(updatedBookmark)
+  } catch(error){
+    console.error(error)
+    res.status(400).json({
+      message: error.message
+    })
+  }
+});
 
 // Delete
 app.delete('/api/bookmarks/:id', async (req, res) => {
