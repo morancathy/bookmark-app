@@ -71,5 +71,34 @@ body {
 }
 
 .ShowPage {
+  width: 30%;
+  height: 30%;
+  margin: 0 auto;
+  margin-top: 40px;
+  padding: 10px;
+  text-align: center;
+  border-radius: 25px;
+  background: linear-gradient(to bottom, Indigo, Thistle);
+  color: white;
+  box-shadow: rgba(0, 0, 0, 0.3) 0px 19px 38px, rgba(0, 0, 0, 0.22) 0px 15px 12px;
+  h1 {
+    color: white;
+    font-size: 25px;
+  }
+  form {
+    margin: 30px 0px 20px 0px;
+    // border: solid red;
+    align-items: flex-start;
 
+    input.update{
+        width: 100%;
+        background-color: #bebde9;
+     }
+      input.update:hover {
+    background-color: #9291c7;
+    border: 1px solid #9291c7;
+    color: white;
+}
+
+  }
 }

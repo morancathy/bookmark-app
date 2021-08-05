@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react';
+import { Link } from 'react-router-dom';
 
 export default function Show(props) {
 	const [bookmarks, setBookmarks] = useState([]);
@@ -86,8 +87,11 @@ export default function Show(props) {
 						defaultValue={bookmarks.link}
 					/>
 				</label>
-				<input type="submit" value="Update" />
+				<input className="update" type="submit" value="Update" />
 			</form>
+			<Link to={`/home`}>
+				<p>Back to Home Page</p>
+			</Link>
 		</div>
 	);
 }
