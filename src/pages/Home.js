@@ -8,7 +8,7 @@ export default function Home(props) {
 		title: '',
 		link: ''
 	});
-	const bodyInput = useRef(null);
+	const linkInput = useRef(null);
 	const titleInput = useRef(null);
 
 	useEffect(() => {
@@ -73,7 +73,7 @@ export default function Home(props) {
 				},
 				body: JSON.stringify({
 					title: titleInput.current.value,
-					body: bodyInput.current.value
+					link: linkInput.current.value
 				})
 			});
 			const data = await response.json();
@@ -110,29 +110,6 @@ export default function Home(props) {
 							<a className="link" href={bookmark.link} target="_blank">
 								{bookmark.title}
 							</a>
-
-							{/*another way to write this to prevent loop?*/}
-							<button onClick={() => handleDelete(bookmark._id)}>Delete</button>
-
-							<form onSubmit={handleUpdate}>
-								<label>
-									Title:
-									<input
-										type="text"
-										ref={titleInput}
-										defaultValue={bookmark.title}
-									/>
-								</label>
-								<label>
-									Body:
-									<input
-										type="text"
-										ref={bodyInput}
-										defaultValue={bookmark.body}
-									/>
-								</label>
-								<input type="submit" value="Update" />
-							</form>
 							<Link to={`/${bookmark._id}`}>
 								<button>Update</button>
 							</Link>

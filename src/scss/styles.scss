@@ -9,11 +9,18 @@ body {
 .NavBar {
   display: flex;
   justify-content: space-around;
-  width: 100%;
+  width: 100vw;
   background-color: #f0f0f0;
 }
 
 .HomePage {
+  background-color: lightgray;
+  width: 100vw;
+  height: 97vh;
+  margin: 0 auto;
+  text-align: center;
+  border: solid red;
+
 
 }
 
@@ -26,5 +33,9 @@ body {
 }
 
 .AppPage {
+
+}
+
+.ShowPage {
 
 }
