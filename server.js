@@ -5,6 +5,7 @@ const PORT = process.env.PORT || 8000;
 const mongoose = require('mongoose');
 const Bookmark = require('./models/bookmark')
 const path = require('path');
+const bookmarkController = require('./controllers/bookmarks');
 
 const MONGODB_URI = process.env.MONGODB_URI
 const db = mongoose.connection;
@@ -22,78 +23,10 @@ if (process.env.NODE_ENV !== 'development'){
   app.use(express.static('public'))
 }
 
-/* Controller Goes Here Remove the tes*/
-app.get('/test', (req, res)=>{
-	res.status(200).json({
-		website: 'My Website',
-		info: 'Not that much'
-	})
-})
-// Create
-app.post('/api/bookmarks', async (req, res) => {
-  try {
-    const createdBookmark = await Bookmark.create(req.body)
-    res.status(200).json(createdBookmark)
-  } catch(error) {
-    console.error(error)
-    res.status(400).json({
-      message: error.message
-    })
-  }
-});
+/* Controller Goes Here Remove the test*/
+app.use('/api/bookmarks', bookmarkController)
 
-// Read (Index)
-app.get('/api/bookmarks', async (req, res) => {
-  try {
-    const foundBookmarks = await Bookmark.find({})
-    res.status(200).json(foundBookmarks)
-  } catch(error) {
-    console.error(error)
-    res.status(404).json({
-      message: error.message
-    })
-  }
-});
-
-// Read (Show)
-app.get('/api/bookmarks/:id', async (req, res) => {
-  try{
-    const foundBookmark = await Bookmark.findById(req.params.id)
-    res.status(200).json(foundBookmark)
-  } catch(error){
-    console.error(error)
-    res.status(400).json({
-      message: error.message
-    })
-  }
-});
-
-// Update
-app.put('/api/bookmarks/:id', async (req, res) => {
-  try{
-    const updatedBookmark = await Bookmark.findByIdAndUpdate(req.params.id, req.body, {new: true})
-    res.status(200).json(updatedBookmark)
-  } catch(error){
-    console.error(error)
-    res.status(400).json({
-      message: error.message
-    })
-  }
-});
-
-// Delete
-app.delete('/api/bookmarks/:id', async (req, res) => {
-  try {
-    const deletedBookmark = await Bookmark.findByIdAndDelete(req.params.id)
-    res.status(200).json(deletedBookmark)
-  } catch (error) {
-    console.error(error)
-    res.status(400).json({
-      message: error.message
-    })
-  }
-});
-/* Controller Ends here */
+// /* Controller Ends here */
 
 //LISTENER
 
@@ -114,16 +47,13 @@ const http = require('http'); // The node http module allow you to create server
 const fs = require('fs'); // The node file system module allows you to create files and interact with file system
 const path = require('path'); // path allows you to get the path of a folder etc.
 const PORT = process.env.PORT || 8080;
-
 const public = __dirname + '/public'
-
 http.createServer(function (req, res) {
 	let filePath = public + req.url;
 	if (filePath == public + '/') {
 	  filePath = public + '/index.html';
 	}
   filePath = filePath.split('?')[0]
-
 	let extName = String(path.extname(filePath)).toLowerCase();
 	const mimeTypes = {
 	'.html': 'text/html',
@@ -142,7 +72,6 @@ http.createServer(function (req, res) {
         '.otf': 'application/font-otf',
         '.wasm': 'application/wasm'
 	};
-
 	let contentType = mimeTypes[extName] || 'application/octet-stream';
 	fs.readFile(filePath, function(error, content) {
 	if (error) {
@@ -163,7 +92,6 @@ http.createServer(function (req, res) {
 	  }
 	});
 }).listen(PORT);
-
 console.log(`Server started! Listening on port: ${PORT}`);
 // basic node server without express serving
 */
