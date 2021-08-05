@@ -50,11 +50,15 @@ export default function Show(props) {
 		} catch (error) {
 			console.error(error);
 		}
+		// 	finally {
+		// 	window.location.assign('/home');
+		// }
 	};
 
 	return (
 		<div className="ShowPage">
 			This is the {props.page} page
+			{/*where is props and name 'app' coming from*/}
 			{Object.keys(bookmarks).length ? (
 				<>
 					<h1>{bookmarks.title} Bookmark </h1>
@@ -62,7 +66,7 @@ export default function Show(props) {
 			) : (
 				<h1> Loading...</h1>
 			)}
-			<button onClick={() => handleDelete(bookmark._id)}>Delete</button>
+			<button onClick={() => handleDelete(bookmarks._id)}>Delete</button>
 			{/*another way to write this to prevent loop?*/}
 			<form
 				style={{ display: 'flex', flexDirection: 'column' }}

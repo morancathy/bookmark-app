@@ -8,8 +8,6 @@ export default function Home(props) {
 		title: '',
 		link: ''
 	});
-	const linkInput = useRef(null);
-	const titleInput = useRef(null);
 
 	useEffect(() => {
 		(async () => {
@@ -63,30 +61,8 @@ export default function Home(props) {
 		}
 	};
 
-	const handleUpdate = async e => {
-		e.preventDefault();
-		try {
-			const response = await fetch(`/api/bookmarks/${props.match.params.id}`, {
-				method: 'PUT',
-				headers: {
-					'Content-Type': 'application/json'
-				},
-				body: JSON.stringify({
-					title: titleInput.current.value,
-					link: linkInput.current.value
-				})
-			});
-			const data = await response.json();
-			setBookmarks(data);
-		} catch (error) {
-			console.error(error);
-		}
-	};
-
 	return (
 		<div className="HomePage">
-			This is the {props.page} page
-			{/*where is props and name 'app' coming from*/}
 			<h1>My Bookmarks</h1>
 			<form onSubmit={handleSubmit}>
 				<input
@@ -101,7 +77,7 @@ export default function Home(props) {
 					placeholder="link"
 					onChange={handleChange}
 				/>
-				<input type="submit" value="Add New Website" />
+				<input type="submit" value="Add" />
 			</form>
 			<ul>
 				{bookmarks.map(bookmark => {
