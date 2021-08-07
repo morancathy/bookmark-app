@@ -9,7 +9,7 @@ import routes from './routes';
 const AppRouter = () => {
 	return (
 		<Router>
-			<NavBar routes={routes} />
+			{/*}<NavBar routes={routes} />*/}
 			<Switch>
 				{routes.map(({ Component, key, path }) => (
 					<Route
@@ -27,7 +27,7 @@ const AppRouter = () => {
 					path={'/'}
 					render={routerProps => <App {...routerProps} />}
 				></Route>
-				{/*<Route path="*">
+				{/*	<Route path="*">
 					<NotFound />
 				</Route>*/}
 			</Switch>

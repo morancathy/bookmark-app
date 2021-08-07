@@ -1,8 +1,8 @@
 import React, { useState, useEffect, useRef } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, Redirect } from 'react-router-dom';
 
 export default function Show(props) {
-	const [bookmarks, setBookmarks] = useState([]);
+	const [bookmarks, setBookmarks] = useState({});
 	const linkInput = useRef(null);
 	const titleInput = useRef(null);
 
@@ -15,6 +15,9 @@ export default function Show(props) {
 		(async () => {
 			try {
 				const response = await fetch(`/api/bookmarks/${props.match.params.id}`);
+				if (!response.ok) {
+					window.location.assign('/');
+				}
 				const data = await response.json();
 				setBookmarks(data);
 			} catch (error) {
@@ -74,6 +77,7 @@ export default function Show(props) {
 	return (
 		<div className="ShowPage">
 			{/*where is props and name 'app' coming from*/}
+			{console.log(bookmarks.message)}
 			{Object.keys(bookmarks).length ? (
 				<>
 					<h1>Edit Bookmark </h1>
@@ -83,6 +87,7 @@ export default function Show(props) {
 			)}
 			<button onClick={() => handleDelete(bookmarks._id)}>Delete</button>
 			{/*another way to write this to prevent loop?*/}
+			{console.log(bookmarks)}
 			<form
 				style={{ display: 'flex', flexDirection: 'column' }}
 				onSubmit={handleUpdate}

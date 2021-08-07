@@ -22,6 +22,7 @@ export default function Home(props) {
 	}, []);
 
 	const handleSubmit = async e => {
+		// e.stopPropagation();
 		e.preventDefault();
 		try {
 			const response = await fetch('/api/bookmarks', {
@@ -43,6 +44,8 @@ export default function Home(props) {
 	};
 
 	const handleChange = e => {
+		// e.stopPropagation();
+		// e.preventDefault();
 		//why is this not async but handleSubmit is
 		setNewBookmark({ ...newBookmark, [e.target.id]: e.target.value });
 	}; //still not to sure what e.target.id and e.target.value actually does
@@ -81,6 +84,7 @@ export default function Home(props) {
 			</form>
 			<ul>
 				{bookmarks.map(bookmark => {
+					console.log(bookmark._id);
 					return (
 						<li className="list-item" key={bookmark._id}>
 							<a className="link" href={bookmark.link} target="_blank">
@@ -102,6 +106,6 @@ export default function Home(props) {
 // <h3>
 // 	<FaTimes
 // 		style={{ color: 'red', cursor: 'pointer' }}
-// 		onClick={() => handleDelete(bookmark._id)}
+// onClick={() => handleDelete(bookmark._id)}
 // 	/>
 // </h3>

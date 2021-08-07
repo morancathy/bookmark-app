@@ -4,15 +4,15 @@
 
 body {
   font-size: 16px;
-
+  
 }
 
-.NavBar {
-  display: flex;
-  justify-content: space-around;
-  width: 100vw;
-  background-color: #f0f0f0;
-}
+// .NavBar {
+//   display: flex;
+//   justify-content: space-around;
+//   width: 100vw;
+//   background-color: #f0f0f0;
+// }
 
 .HomePage {
   width: 30%;
@@ -53,6 +53,12 @@ body {
       padding: 5px;
       a, button {
         color: #4B0082;
+      }
+
+      button:hover {
+        background-color: #9291c7;
+        border: 1px solid #9291c7;
+        color: white;
       }
     }
   }
