@@ -6,6 +6,11 @@ export default function Show(props) {
 	const linkInput = useRef(null);
 	const titleInput = useRef(null);
 
+	// const [bookmarks, setBookmarks] = React.useState({
+	// 	title: '',
+	// 	link: ''
+	// });
+
 	useEffect(() => {
 		(async () => {
 			try {
@@ -30,7 +35,7 @@ export default function Show(props) {
 		} catch (error) {
 			console.error(error);
 		} finally {
-			window.location.assign('/home');
+			window.location.assign('/');
 		}
 	};
 	const handleUpdate = async e => {
@@ -44,6 +49,8 @@ export default function Show(props) {
 				body: JSON.stringify({
 					title: titleInput.current.value,
 					link: linkInput.current.value
+					// title: title.current.value,
+					// link: link.current.value
 				})
 			});
 			const data = await response.json();
@@ -56,13 +63,20 @@ export default function Show(props) {
 		// }
 	};
 
+	function handleChange(evt) {
+		const value = evt.target.value;
+		setBookmarks({
+			...bookmarks,
+			[evt.target.name]: value
+		});
+	}
+
 	return (
 		<div className="ShowPage">
-			This is the {props.page} page
 			{/*where is props and name 'app' coming from*/}
 			{Object.keys(bookmarks).length ? (
 				<>
-					<h1>{bookmarks.title} Bookmark </h1>
+					<h1>Edit Bookmark </h1>
 				</>
 			) : (
 				<h1> Loading...</h1>
@@ -74,26 +88,35 @@ export default function Show(props) {
 				onSubmit={handleUpdate}
 			>
 				<label>
-					Title:{'  '}
-					<input type="text" ref={titleInput} defaultValue={bookmarks.title} />
-				</label>
-				<label>
-					Link:{'  '}
-					<textarea
+					<h4 className="label">Title: </h4>
+					<input
 						type="text"
-						rows="1"
-						cols="50"
-						ref={linkInput}
-						defaultValue={bookmarks.link}
+						name="title"
+						defaultValue={bookmarks.title}
+						ref={titleInput}
 					/>
+					<h4>{bookmarks.title}</h4>
+				</label>
+
+				<label>
+					<h4 className="label">Link: </h4>
+					<input
+						type="text"
+						name="link"
+						defaultValue={bookmarks.link}
+						ref={linkInput}
+					/>
+					<h4>{bookmarks.link}</h4>
 				</label>
 				<input className="update" type="submit" value="Update" />
 			</form>
-			<Link to={`/home`}>
+			<Link to={`/`}>
 				<p>Back to Home Page</p>
 			</Link>
 		</div>
 	);
 }
-
+//
+//
+// onChange={handleChange}
 //<button onClick={() => handleDelete(bookmark._id)}>Delete</button>{' '}
