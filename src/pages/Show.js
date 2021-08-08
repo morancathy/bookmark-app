@@ -17,9 +17,10 @@ export default function Show(props) {
 				const response = await fetch(`/api/bookmarks/${props.match.params.id}`);
 				if (!response.ok) {
 					window.location.assign('/');
+				} else {
+					const data = await response.json();
+					setBookmarks(data);
 				}
-				const data = await response.json();
-				setBookmarks(data);
 			} catch (error) {
 				console.error(error);
 			}

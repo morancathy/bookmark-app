@@ -2,7 +2,7 @@ import React from 'react';
 import NavBar from '../components/NavBar';
 import { BrowserRouter as Router, Route, Switch, Link } from 'react-router-dom';
 import Show from '../pages/Show';
-// import NotFound from '../pages/NotFound';
+import NotFound from '../pages/NotFound';
 
 import routes from './routes';
 
@@ -27,7 +27,7 @@ const AppRouter = () => {
 					path={'/'}
 					render={routerProps => <App {...routerProps} />}
 				></Route>
-				{/*	<Route path="*">
+				{/*<Route path={'/notfound'}>
 					<NotFound />
 				</Route>*/}
 			</Switch>
