@@ -4,7 +4,7 @@
 
 body {
   font-size: 16px;
-  
+
 }
 
 // .NavBar {
@@ -15,8 +15,8 @@ body {
 // }
 
 .HomePage {
-  width: 30%;
-  height: 30%;
+  width: 40vw;
+  max-width: 500px;
   margin: 0 auto;
   margin-top: 40px;
   padding: 10px;
@@ -77,8 +77,8 @@ body {
 }
 
 .ShowPage {
-  width: 40%;
-  height: 30%;
+  width: 40vw;
+  max-width: 500px;
   margin: 0 auto;
   margin-top: 40px;
   padding: 10px;
@@ -92,32 +92,41 @@ body {
     font-size: 25px;
   }
   form {
-    margin: 30px 0px 20px 0px;
-    // border: solid red;
-    align-items: flex-start;
+    margin: 20px 0px 20px 0px;
+    // border: solid green;
+    width: 100%;
 
     label  {
       display: flex;
-      flex-direction: row;
-      text-align: center;
-      justify-content: center;
-      align-content: center;
+      flex-direction: column;
+      // border: solid blue;
       padding-top: 5px;
 
       .label {
         color: white;
+        // border: solid orange;
+        margin-bottom: -2px;
+        margin-left: 0px;
+        font-size: 17px;
       }
-      input {
-        justify-content: center;
-        // width: 100%;
+      input, textarea  {
         margin: 5px;
-        padding: 0 10px 0px 10px;
+        padding: 0 10px 0px 5px;
+        color: Indigo;
+        // border: solid red;
+      }
+      textarea {
+        background-color: inherit;
+        color: lightgray;
+        border: none;
       }
       h4 {
-        font-size: 20px;
+        font-size: 16px;
         padding-left: 10px;
-        margin-top: 7px;
+        margin-top: 5px;
         color: lightgray;
+        // border: solid yellow;
+        text-align: left;
       }
     }
 

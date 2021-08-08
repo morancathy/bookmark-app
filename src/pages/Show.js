@@ -112,7 +112,7 @@ export default function Show(props) {
 						defaultValue={bookmarks.link}
 						ref={linkInput}
 					/>
-					<h4>{bookmarks.link}</h4>
+					<textarea value={bookmarks.link}></textarea>
 				</label>
 				<input className="update" type="submit" value="Update" />
 			</form>
