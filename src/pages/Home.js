@@ -22,13 +22,13 @@ export default function Home(props) {
 	}, []);
 
 	const handleSubmit = async e => {
-		// e.stopPropagation();
 		e.preventDefault();
+
 		try {
 			const response = await fetch('/api/bookmarks', {
 				method: 'POST',
 				headers: {
-					'Content-Type': 'application/json' //headers?
+					'Content-Type': 'application/json'
 				},
 				body: JSON.stringify(newBookmark) //so turning into string just to turn back again?
 			});
@@ -44,24 +44,7 @@ export default function Home(props) {
 	};
 
 	const handleChange = e => {
-		// e.stopPropagation();
-		// e.preventDefault();
-		//why is this not async but handleSubmit is
 		setNewBookmark({ ...newBookmark, [e.target.id]: e.target.value });
-	}; //still not to sure what e.target.id and e.target.value actually does
-
-	const handleDelete = async id => {
-		try {
-			const response = await fetch(`/api/bookmarks/${id}`, {
-				method: 'DELETE',
-				headers: {
-					'Content-Type': 'application/json'
-				}
-			});
-			setBookmarks(bookmarks.filter(bookmark => bookmark._id !== id));
-		} catch (error) {
-			console.error(error);
-		}
 	};
 
 	return (
@@ -80,11 +63,10 @@ export default function Home(props) {
 					placeholder="link"
 					onChange={handleChange}
 				/>
-				<input type="submit" value="Add" />
+				<input className="add" type="submit" value="Add" />
 			</form>
 			<ul>
 				{bookmarks.map(bookmark => {
-					console.log(bookmark._id);
 					return (
 						<li className="list-item" key={bookmark._id}>
 							<a className="link" href={bookmark.link} target="_blank">

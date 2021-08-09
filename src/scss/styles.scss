@@ -4,15 +4,13 @@
 
 body {
   font-size: 16px;
-
+  background-color: #F2F2F2;
 }
 
-// .NavBar {
-//   display: flex;
-//   justify-content: space-around;
-//   width: 100vw;
-//   background-color: #f0f0f0;
-// }
+#app{
+  background-color: #F2F2F2;
+  height:95vh;
+}
 
 .HomePage {
   width: 40vw;
@@ -27,32 +25,58 @@ body {
   box-shadow: rgba(0, 0, 0, 0.3) 0px 19px 38px, rgba(0, 0, 0, 0.22) 0px 15px 12px;
   h1 {
     color: white;
+    font-size: 25px;
   }
   form {
     margin: 30px 0px 20px 0px;
+    width: 100%;
+    // border: solid black;
 
-    #link {
+    .add{
+      margin-top: 7px;
+      // border-radius: 8px;
+      width: 60px;
+    }
+    .add:hover {
+      background-color: #9291c7;
+      border: 1px solid #9291c7;
+      color: white;
+    }
+
+    #title, #link {
       margin-left: 5px;
       margin-right: 5px;
+      // border: solid blue;
+      max-width: 100%;
     }
   }
   ul {
-    // border: solid Indigo;
     margin: 0 auto;
     margin-top: 30px;
     margin-bottom: 30px;
-    width: 70%;
-
+    max-width: 70%;
+    // border: solid red;
     li:nth-child(even) {background: #D8BFD8}
     li:nth-child(odd) {background: #DDA0DD}
     li{
+      // border: solid yellow;
       display: flex;
       flex-direction: row;
+      flex-wrap: wrap;
       justify-content: space-between;
-      align-items: center;
+      align-items: flex-start;
       padding: 5px;
       a, button {
         color: #4B0082;
+      }
+      a {
+        text-align: left;
+        // border: solid orange;
+      }
+      button {
+        // border: solid blue;
+        // background-color: #C9C9C9;
+        font-size: 14px;
       }
 
       button:hover {
@@ -91,11 +115,18 @@ body {
     color: white;
     font-size: 25px;
   }
+  button {
+    background-color: #bebde9;
+  }
+  button:hover {
+    background-color: #9291c7;
+    border: 1px solid #9291c7;
+    color: white;
+  }
   form {
     margin: 20px 0px 20px 0px;
     // border: solid green;
     width: 100%;
-
     label  {
       display: flex;
       flex-direction: column;
@@ -141,4 +172,22 @@ body {
       color: white;
     }
   }
+}
+
+
+.NotFoundPage {
+  width: 40vw;
+  max-width: 500px;
+  margin: 0 auto;
+  margin-top: 200px;
+  padding: 10px;
+  text-align: center;
+  border-radius: 25px;
+  background: linear-gradient(to bottom, Indigo, Thistle);
+  color: white;
+  box-shadow: rgba(0, 0, 0, 0.3) 0px 19px 38px, rgba(0, 0, 0, 0.22) 0px 15px 12px;
+
+    h2{
+
+    }
 }
