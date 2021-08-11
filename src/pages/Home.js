@@ -24,13 +24,18 @@ export default function Home(props) {
 	const handleSubmit = async e => {
 		e.preventDefault();
 
+		if (!title) {				//why doesn this work
+			alert('Please add bookmark');
+			return;
+		}
+
 		try {
 			const response = await fetch('/api/bookmarks', {
 				method: 'POST',
 				headers: {
 					'Content-Type': 'application/json'
 				},
-				body: JSON.stringify(newBookmark) //so turning into string just to turn back again?
+				body: JSON.stringify(newBookmark)
 			});
 			const data = await response.json();
 			setBookmarks([...bookmarks, data]); //this means adding 'data' to end of bookmark array?

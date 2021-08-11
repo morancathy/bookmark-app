@@ -2,21 +2,25 @@
 @import "reset";
 @import "grid";
 
+html {
+    background-color: #F2F2F2;
+    padding-top: 40px;
+}
 body {
   font-size: 16px;
-  background-color: #F2F2F2;
 }
 
 #app{
   background-color: #F2F2F2;
-  height:95vh;
+  height: 94vh;
 }
 
 .HomePage {
   width: 40vw;
   max-width: 500px;
   margin: 0 auto;
-  margin-top: 40px;
+  // margin-top: 40px;
+  // padding-top: 40px;
   padding: 10px;
   text-align: center;
   border-radius: 25px;
