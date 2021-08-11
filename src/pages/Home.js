@@ -24,8 +24,9 @@ export default function Home(props) {
 	const handleSubmit = async e => {
 		e.preventDefault();
 
-		if (!title) {				//why doesn this work
-			alert('Please add bookmark');
+		if (!newBookmark.title || !newBookmark.link) {
+			//JH's title was it's own state. Mine is an object
+			alert('Please add website title and link');
 			return;
 		}
 
