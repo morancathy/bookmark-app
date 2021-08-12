@@ -1,6 +1,6 @@
 {
   "engines": {
-    "node": "14.x"
+    "node": "14.17.0"
   },
   "name": "big-poppa-code-react-starter-kit",
   "version": "0.1.0",
