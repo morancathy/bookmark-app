@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { Link, Redirect, useHistory } from 'react-router-dom';
+import { isWebUri } from 'valid-url';
 
 export default function Show(props) {
 	const [bookmarks, setBookmarks] = useState({});
@@ -10,12 +11,8 @@ export default function Show(props) {
 		(async () => {
 			try {
 				const response = await fetch(`/api/bookmarks/${props.match.params.id}`);
-				if (!response.ok) {
-					window.location.assign('/notfound');
-				} else {
-					const data = await response.json();
-					setBookmarks(data);
-				}
+				const data = await response.json();
+				setBookmarks(data);
 			} catch (error) {
 				console.error(error);
 			}
@@ -67,7 +64,6 @@ export default function Show(props) {
 
 	return (
 		<div className="ShowPage">
-			{/*where is props and name 'app' coming from*/}
 			{Object.keys(bookmarks).length ? (
 				<>
 					<h1>Edit Bookmark </h1>
@@ -109,7 +105,3 @@ export default function Show(props) {
 		</div>
 	);
 }
-//
-//
-// onChange={handleChange}
-//<button onClick={() => handleDelete(bookmark._id)}>Delete</button>{' '}

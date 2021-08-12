@@ -25,7 +25,6 @@ if (process.env.NODE_ENV !== 'development'){
 
 /* Controller Goes Here Remove the test*/
 app.use('/api/bookmarks', bookmarkController)
-
 // /* Controller Ends here */
 
 //LISTENER

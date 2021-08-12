@@ -3,7 +3,6 @@ import App from '../pages/App';
 import About from '../pages/About';
 import Home from '../pages/Home';
 import Contact from '../pages/Contact';
-import NotFound from '../pages/NotFound';
 
 const routes = [
 	{
@@ -25,11 +24,6 @@ const routes = [
 		Component: App,
 		key: 'App',
 		path: '/App'
-	},
-	{
-		Component: NotFound,
-		key: 'NotFound',
-		path: '/notfound'
 	}
 ];
 

@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { Link } from 'react-router-dom';
 import { FaTimes } from 'react-icons/fa';
+import { isWebUri } from 'valid-url';
 
 export default function Home(props) {
 	const [bookmarks, setBookmarks] = useState([]);
@@ -25,7 +26,6 @@ export default function Home(props) {
 		e.preventDefault();
 
 		if (!newBookmark.title || !newBookmark.link) {
-			//JH's title was it's own state. Mine is an object
 			alert('Please add website title and link');
 			return;
 		}
@@ -39,7 +39,7 @@ export default function Home(props) {
 				body: JSON.stringify(newBookmark)
 			});
 			const data = await response.json();
-			setBookmarks([...bookmarks, data]); //this means adding 'data' to end of bookmark array?
+			setBookmarks([...bookmarks, data]);
 			setNewBookmark({
 				title: '',
 				link: ''
@@ -75,9 +75,13 @@ export default function Home(props) {
 				{bookmarks.map(bookmark => {
 					return (
 						<li className="list-item" key={bookmark._id}>
-							<a className="link" href={bookmark.link} target="_blank">
-								{bookmark.title}
-							</a>
+							{!isWebUri(bookmark.link) ? (
+								<Link to={'/notfound'}>{bookmark.title}</Link>
+							) : (
+								<a className="link" href={bookmark.link} target="_blank">
+									{bookmark.title}
+								</a>
+							)}
 							<Link to={`/${bookmark._id}`}>
 								<button>Update</button>
 							</Link>
@@ -88,12 +92,3 @@ export default function Home(props) {
 		</div>
 	);
 }
-
-//
-
-// <h3>
-// 	<FaTimes
-// 		style={{ color: 'red', cursor: 'pointer' }}
-// onClick={() => handleDelete(bookmark._id)}
-// 	/>
-// </h3>
