@@ -15,7 +15,7 @@ export default function Show(props) {
 			} catch (error) {
 				console.error(error);
 			}
-		})(); //what did this last () do?
+		})();
 	}, []);
 
 	const handleDelete = async id => {
