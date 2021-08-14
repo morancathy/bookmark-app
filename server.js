@@ -3,7 +3,6 @@ const express = require('express');
 const app = express();
 const PORT = process.env.PORT || 8000;
 const mongoose = require('mongoose');
-const Bookmark = require('./models/bookmark')
 const path = require('path');
 const bookmarkController = require('./controllers/bookmarks');
 
@@ -27,7 +26,7 @@ if (process.env.NODE_ENV !== 'development'){
 app.use('/api/bookmarks', bookmarkController)
 // /* Controller Ends here */
 
-//LISTENER
+
 
 
 // for react router
@@ -35,6 +34,7 @@ app.get('*', (req, res) => {
 	res.sendFile(path.resolve(path.join(__dirname, 'public', 'index.html')))
 })
 
+//LISTENER
 app.listen(PORT, () => {
     console.log(`API Listening on port ${PORT}`);
 });

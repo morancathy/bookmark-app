@@ -1,6 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react';
-import { Link, Redirect, useHistory } from 'react-router-dom';
-import { isWebUri } from 'valid-url';
+import { Link, Redirect } from 'react-router-dom';
 
 export default function Show(props) {
 	const [bookmarks, setBookmarks] = useState({});

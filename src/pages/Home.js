@@ -1,6 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { Link } from 'react-router-dom';
-import { FaTimes } from 'react-icons/fa';
 import { isWebUri } from 'valid-url';
 
 export default function Home(props) {
