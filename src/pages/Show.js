@@ -53,14 +53,6 @@ export default function Show(props) {
 		}
 	};
 
-	function handleChange(evt) {
-		const value = evt.target.value;
-		setBookmarks({
-			...bookmarks,
-			[evt.target.name]: value
-		});
-	}
-
 	return (
 		<div className="ShowPage">
 			{Object.keys(bookmarks).length ? (
