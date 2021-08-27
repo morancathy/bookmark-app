@@ -8,9 +8,7 @@ router.post('/', async (req, res) => {
     res.status(200).json(createdBookmark)
   } catch(error) {
     console.error(error)
-    res.status(400).json({
-      message: error.message
-    })
+    res.status(400).json({message: error.message})
   }
 });
 
